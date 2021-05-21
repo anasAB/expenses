@@ -1,5 +1,5 @@
 import ExpenseItem from "./Component/ExpenseItem";
-import ExpenseForm from "./Component/NewExpens/ExpenseForm";
+import ExpenseForm from "./Component/NewExpense/ExpenseForm";
 
 const expensesItem = [
   { title: 'Car insurance', cost: 250, date: new Date(2021, 2, 2) },
@@ -16,7 +16,7 @@ function App() {
     <ExpenseForm/>
     {expensesItem.map(item => {
       return (
-        <ExpenseItem title={item.title} cost={item.cost} date={item.date} />
+        <ExpenseItem key={Math.random()} title={item.title} cost={item.cost} date={item.date} />
       )
     })}
     </div>
