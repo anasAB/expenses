@@ -9,6 +9,12 @@
     background-color: #4b4b4b;
     text-align: center;
   }
+
+  .expense-item :hover{
+    transition: color 2s ease-in-out;
+    color: rgb(10, 10, 10); 
+    border-radius: 10px; 
+  }
   
   .expense-item__description {
     display: flex;
@@ -27,6 +33,7 @@
     margin: 0 1rem;
     color: white;
   }
+  
   
   .expense-item__price {
     font-size: 1rem;
