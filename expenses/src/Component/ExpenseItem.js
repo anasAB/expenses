@@ -4,24 +4,35 @@ import './ExpenseItem.css'
 
 
 const ExpenseItem = (props) => {
-    const { date, cost } = props
-    
-    const [title, setTitle] = useState(props.title);
+    const { title, date, amount, cost } = props
 
-    const ChangeTitleHandler = (title) => {
-        setTitle('xxx')
+
+    const ChangeTitleHandler = (expense) => {
+        let inputVal = document.getElementById("title");
+
+        // setTitle('xxx')
+        console.log(inputVal);
     }
 
     return (
+
         <div className='expense-item' key={Math.random()}>
             <ExpenseDate date={date} />
+
             <div className='expense-item__description'>
                 <h2>{title}</h2>
-                <div className='expense-item__price'>{cost}</div>
+                <div className='expense-item__price' >${cost}</div>
             </div>
-            <button
-                onClick={() => ChangeTitleHandler(title)}>change title
+
+            <div className='ex'>
+                <button className='expense-item__edit'
+                    onClick={ChangeTitleHandler}>change title
             </button>
+
+                <button className='expense-item__delete'
+                    onClick={ChangeTitleHandler}>Delete
+            </button>
+            </div>
         </div>
     )
 
