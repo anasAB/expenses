@@ -1,7 +1,10 @@
+import React, { useState } from 'react'
 import ExpenseItem from "./Component/ExpenseItem";
 import ExpenseForm from "./Component/NewExpense/ExpenseForm";
+import ExpensesFilter from './Component/NewExpense/ExpensesFilter';
+import NewExpense from './Component/NewExpense/NewExpense';
 
-const expensesItem = [
+let expensesItem = [
   { title: 'Car insurance', cost: 250, date: new Date(2021, 2, 2) },
   { title: 'Health insurance', cost: 240, date: new Date(2021, 3, 4) },
   { title: 'Rent', cost: 230, date: new Date(2021, 4, 3) },
@@ -10,15 +13,31 @@ const expensesItem = [
 ]
 
 
-function App() {
+const App = () => {
+  const [expenses, setExpensesItem] = useState({ expensesItem });
+  const [filteredYear, setFilteredYear] = useState('2020');
+
+  const receiveNewExpensive = (newExpensive) => {
+    let newItem = expensesItem.push(newExpensive);
+    setExpensesItem(newItem)
+  }
+
+
+  const changeFilterHandler = (selectedYear) => {
+    setFilteredYear(selectedYear)
+  }
+
+
+
   return (
     <div>
-    <ExpenseForm/>
-    {expensesItem.map(item => {
-      return (
-        <ExpenseItem key={Math.random()} title={item.title} cost={item.cost} date={item.date} />
-      )
-    })}
+      <NewExpense receiveNewExpensive={receiveNewExpensive} />
+      <ExpensesFilter selectedYear={filteredYear} onChangeFilter={changeFilterHandler} />
+      {expensesItem.map(item => {
+        return (
+          <ExpenseItem key={Math.random()} title={item.title} cost={item.cost} date={item.date} amount={item.amount} />
+        )
+      })}
     </div>
   )
 

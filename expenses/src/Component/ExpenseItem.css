@@ -44,6 +44,16 @@
     padding: 0.5rem;
     border-radius: 12px;
   }
+
+  .expense-item__edit{
+    color: #c0aaae;
+    background-color: #2e38c9;
+  }
+  
+  .expense-item__delete{
+    color: #c0aaae;
+    background-color: #c7222b;
+  }
   
   @media (min-width: 580px) {
     .expense-item__description {
