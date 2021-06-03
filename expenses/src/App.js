@@ -48,17 +48,15 @@ const App = () => {
   })
 
   
-  if (filterExpenses.length <= 0) {
-    filterExpenses = <div style={{ textAlign: 'center' }}><h1>There are no expenses right now </h1></div>
-  }
-  
   //**! calculate total cost */
   let totalCost = filterExpenses.reduce(function (accumulator, filterExpenses) {
     return accumulator + filterExpenses.props.cost;
   }, 0)
 
 
-
+  if (filterExpenses.length <= 0) {
+    filterExpenses = <div style={{ textAlign: 'center' }}><h1>There are no expenses right now </h1></div>
+  }
 
 
   return (
