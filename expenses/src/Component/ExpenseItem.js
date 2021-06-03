@@ -9,31 +9,30 @@ const ExpenseItem = (props) => {
 
     const ChangeTitleHandler = (expense) => {
         let inputVal = document.getElementById("title");
-
-        // setTitle('xxx')
-        console.log(inputVal);
     }
 
-    return (
+    // const deleteExpenes = (deleteItem) =>{
+    //     console.log('delete Item',deleteItem.target);
+    // }
 
-        <div className='expense-item' key={Math.random()}>
-            <ExpenseDate date={date} />
+return (
+    <div className='expense-item' key={Math.random()}>
+        <ExpenseDate date={date} />
+        <div className='expense-item__description'>
+            <h2>{title}</h2>
+            <div className='expense-item__price' >${cost}</div>
+        </div>
 
-            <div className='expense-item__description'>
-                <h2>{title}</h2>
-                <div className='expense-item__price' >${cost}</div>
-            </div>
-
-            <div className='ex'>
-                <button className='expense-item__edit'
+        <div className='ex'>
+            <button className='expense-item__edit'
                     onClick={ChangeTitleHandler}>change title
             </button>
-
-                <button className='expense-item__delete'
-                    onClick={ChangeTitleHandler}>Delete
-            </button>
-            </div>
+            
+            {/* <button className='expense-item__delete'
+                    onClick={}>Delete
+            </button> */}
         </div>
+    </div>
     )
 
 }
