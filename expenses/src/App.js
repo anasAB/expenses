@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import ExpenseItem from "./Component/ExpenseItem";
-import ExpenseForm from "./Component/NewExpense/ExpenseForm";
 import ExpensesFilter from './Component/NewExpense/ExpensesFilter';
 import NewExpense from './Component/NewExpense/NewExpense';
-import expenseDate from './Component/ExpenseDate'
 
 let Dummy_Expenses = [
   { title: 'Car insurance', cost: 250, date: new Date(2021, 2, 2) },
@@ -49,14 +47,23 @@ const App = () => {
     )
   })
 
+  
+  //**! calculate total cost */
+  let totalCost = filterExpenses.reduce(function (accumulator, filterExpenses) {
+    return accumulator + filterExpenses.props.cost;
+  }, 0)
+
+
   if (filterExpenses.length <= 0) {
-    filterExpenses = <div style={{textAlign:'center'}}><h1>There are no expenses right now </h1></div>
+    filterExpenses = <div style={{ textAlign: 'center' }}><h1>There are no expenses right now </h1></div>
   }
+
 
   return (
     <div>
       <NewExpense receiveNewExpensive={receiveNewExpensive} />
       <ExpensesFilter selectedYear={filteredYear} onChangeFilter={changeFilterHandler} />
+      <div style={{marginLeft:'20px', fontSize:'20px',fontWeight:'bold'}}>TotalCost: {totalCost}</div>
       {filterExpenses}
     </div>
   )
