@@ -16,9 +16,12 @@ let Dummy_Expenses = [
 ]
 
 
+
+
 const App = () => {
   const [expenses, setExpensesItem] = useState(Dummy_Expenses);
-  const [filteredYear, setFilteredYear] = useState('2021');
+  const [filteredYear, setFilteredYear] = useState('2020');
+
 
   //**! Add new Expenses */
   const receiveNewExpensive = (newExpensive) => {
@@ -32,29 +35,29 @@ const App = () => {
       return item.date.getFullYear().toString() === selectedYear
     })
     setExpensesItem(filteredExpensesByYear)
+    setFilteredYear(selectedYear)
   }
 
   //**! Delete Expenses */
   const deleteExpense = (selectedExpense) => {
-    const deletedItem = expenses.filter((item) => item.id !== selectedExpense);
+
+    let deletedItem = expenses.filter(item => item.id !== selectedExpense);
+  
     setExpensesItem(deletedItem)
-    console.log('deletedItem', expenses);
   }
 
-
-
-
+  
   //**! calculate total cost */
-  // let totalCost = expenses.reduce(function (accumulator, filterExpenses) {
-  //   return accumulator + filterExpenses.props.cost;
-  // }, 0)
+  let totalCost = expenses.length >= 0 ? expenses.reduce(function (accumulator, filterExpenses) {
+    return accumulator + filterExpenses.cost;
+  }, 0) : <>lucky you</>
 
-
+  
   return (
     <div>
       <NewExpense receiveNewExpensive={receiveNewExpensive} />
       <ExpensesFilter selectedYear={filteredYear} onChangeFilter={changeFilterHandler} />
-      {/* <div style={{ marginLeft: '20px', fontSize: '20px', fontWeight: 'bold' }}>TotalCost: {totalCost}</div> */}
+      <div style={{ marginLeft: '20px', fontSize: '20px', fontWeight: 'bold', color: totalCost > 500 ?'red' : 'green' }}>TotalCost: {totalCost}</div>
       <ExpenseItem items={expenses} key={Math.random()} deleteExpense={deleteExpense} />
     </div>
   )
