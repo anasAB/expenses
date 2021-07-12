@@ -19,7 +19,6 @@ const Expenses = (props) => {
     })
    
     
-    console.log('filteredExpenses',filteredExpenses);
     //**! calculate total cost */
     let totalCost = filteredExpenses.length >= 0 ? filteredExpenses.reduce(function (accumulator, MonthCostExpenses) {
         return accumulator += MonthCostExpenses.cost;
@@ -28,12 +27,13 @@ const Expenses = (props) => {
     //? let value = sumBy(filteredExpenses, 'cost');
 
 
+
     return (
         <div>
             <div style={{ marginLeft: '20px', fontSize: '20px', fontWeight: 'bold', color: totalCost > 500 ? 'red' : 'green' }}>TotalCost: {totalCost}</div>
             <ExpensesFilter selectedYear={filteredYear} onChangeFilter={changeFilterHandler} />
             <Chart expenses={filteredExpenses}/>
-            <ExpenseList filteredExpenses={filteredExpenses} key={Math.random()} />
+            <ExpenseList filteredExpenses={filteredExpenses} key={Math.random()} deleteItem={props.deleteItem} />
         </div>
     )
 }

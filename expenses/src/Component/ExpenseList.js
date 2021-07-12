@@ -13,11 +13,13 @@ const ExpenseList = (props) => {
     <ul className='expenses-list'>
       {props.filteredExpenses.map((expense) => (
         <ExpenseItem
-          key={Math.random()}
+          key={expense.id}
+          id={expense.id}
           title={expense.title}
           amount={expense.amount}
           date={expense.date}
           cost={expense.cost}
+          deleteItem={props.deleteItem}
         />
       ))}
     </ul>
