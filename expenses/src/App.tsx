@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Expenses from './Component/NewExpense/Expenses';
 import NewExpense from './Component/NewExpense/NewExpense';
+import { IApp, INewExpensive } from './Component/Typing/App'
 
 let dummy_Expenses = [
   { id: 1, title: 'Car insurance', cost: 250, date: new Date(2021, 2, 2), amount: 10.12 },
@@ -20,15 +21,15 @@ const App = () => {
 
 
   //**! Add new Expenses */
-  const receiveNewExpensive = (newExpensive) => {
-    setExpensesItem((prevExpenses) => {
+  const receiveNewExpensive = (newExpensive: any) => {
+    setExpensesItem((prevExpenses: any) => {
       return [newExpensive, ...prevExpenses];
     });
   }
 
   //**! Delete Item */
-  const deleteItem = (selectedItem) => {
-    const newExpensesList = expenses.filter((item) => item.id !== selectedItem); 
+  const deleteItem = (selectedItem: any) => {
+    const newExpensesList = expenses.filter((item: any) => item.id !== selectedItem);
     setExpensesItem(newExpensesList);
   }
 
