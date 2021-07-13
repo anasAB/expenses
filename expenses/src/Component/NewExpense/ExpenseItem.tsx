@@ -1,11 +1,11 @@
 import React from 'react'
 import ExpenseDate from '../ExpenseDate'
 
-const ExpenseItem = (props) => {
-// console.log('xx',props);
+const ExpenseItem = (props: any) => {
+    // console.log('xx',props);
 
-    const selectItem =(id)=>{
-       props.deleteItem(id)
+    const selectItem = (id: any) => {
+        props.deleteItem(id)
     }
 
     return (
@@ -17,8 +17,8 @@ const ExpenseItem = (props) => {
                     <div className='expense-item__price'>${props.cost}</div>
                 </div>
 
-                <div>
-                    <button onClick={()=>selectItem(props.id)}>Delete</button>
+                <div style={{ margin: '10px' }}>
+                    <button type='button' onClick={() => selectItem(props.id)}>Delete</button>
                 </div>
             </div>
         </div>

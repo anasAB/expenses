@@ -1,8 +1,7 @@
-import React from 'react'
+// import React from 'react'
 import ChartBar from './ChartBar'
 import './Chart.css'
-// import {_sumBy} from 'lodash';
-
+import { IExpenses } from '../Typing/Chart'
 
 let chartDataMonthly = [
     { label: 'Jan', value: 0 },
@@ -19,9 +18,10 @@ let chartDataMonthly = [
     { label: 'Dec', value: 0 },
 ]
 
-const Chart = (props) => {
+const Chart = (props: any) => {
+
     const { expenses } = props
-    
+
     //! update Monthly expenses Value
     for (let i of expenses) {
         const expenseMonth = i.date.getMonth()

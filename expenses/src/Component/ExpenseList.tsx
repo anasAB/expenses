@@ -3,7 +3,7 @@ import './ExpenseItem.css'
 import ExpenseItem from './NewExpense/ExpenseItem';
 
 
-const ExpenseList = (props) => {
+const ExpenseList = (props: any) => {
 
   if (props.filteredExpenses.length === 0) {
     return <h2 className='expenses-list__fallback'>Found no expenses.</h2>;
@@ -11,7 +11,7 @@ const ExpenseList = (props) => {
 
   return (
     <ul className='expenses-list'>
-      {props.filteredExpenses.map((expense) => (
+      {props.filteredExpenses.map((expense: any) => (
         <ExpenseItem
           key={expense.id}
           id={expense.id}
