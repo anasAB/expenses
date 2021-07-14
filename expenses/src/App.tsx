@@ -21,14 +21,15 @@ const App = () => {
 
 
   //**! Add new Expenses */
-  const receiveNewExpensive = (newExpensive: any) => {
+  const receiveNewExpensive = (newExpensive: INewExpensive) => {
     setExpensesItem((prevExpenses: any) => {
       return [newExpensive, ...prevExpenses];
     });
   }
 
   //**! Delete Item */
-  const deleteItem = (selectedItem: any) => {
+  const deleteItem = (selectedItem: Number) => {
+    console.log('xx', selectedItem);
     const newExpensesList = expenses.filter((item: any) => item.id !== selectedItem);
     setExpensesItem(newExpensesList);
   }
