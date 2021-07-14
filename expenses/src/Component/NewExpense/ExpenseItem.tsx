@@ -1,10 +1,10 @@
-import React from 'react'
+// import React from 'react'
 import ExpenseDate from '../ExpenseDate'
+import { IExpenseItem } from '../Typing/ExpenseItem';
 
-const ExpenseItem = (props: any) => {
-    // console.log('xx',props);
+const ExpenseItem = (props: IExpenseItem) => {
 
-    const selectItem = (id: any) => {
+    const selectItem = (id: number) => {
         props.deleteItem(id)
     }
 

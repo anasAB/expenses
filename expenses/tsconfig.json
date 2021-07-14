@@ -3,7 +3,7 @@
     "target": "es6",
     "moduleResolution": "node",
     "module": "esnext",
-    "declaration": false,
+    "declaration": true,
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -23,12 +23,15 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "scripthost",
+      "es6"
     ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "strict": true,
+    "alwaysStrict": true, // Enable JavaScript's "use strict" mode,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,

@@ -4,7 +4,7 @@ export interface IApp {
 
 export interface INewExpensive{
     title:string,
-    cost:number,
+    cost:string,
     date:Date,
     amount:number
 }
