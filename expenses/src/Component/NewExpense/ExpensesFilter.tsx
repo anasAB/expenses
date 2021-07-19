@@ -4,7 +4,7 @@ import {IExpensesFilter} from'../Typing/ExpensesFilter'
 
 const ExpensesFilter = (props: IExpensesFilter) => {
 
-  const dropdownChangeHandler = (event: any) => {    
+  const dropdownChangeHandler = (event: any) => {  
     props.onChangeFilter(event.target.value);
   };
 

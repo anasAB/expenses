@@ -1,7 +1,7 @@
 // import React from 'react'
 import ChartBar from './ChartBar'
 import './Chart.css'
-import { IExpenses } from '../Typing/Chart'
+import { IChart } from '../Typing/Chart'
 
 let chartDataMonthly = [
     { label: 'Jan', value: 0 },
@@ -18,7 +18,7 @@ let chartDataMonthly = [
     { label: 'Dec', value: 0 },
 ]
 
-const Chart = (props: any) => {
+const Chart = (props: IChart) => {
 
     const { expenses } = props
 
@@ -30,8 +30,8 @@ const Chart = (props: any) => {
 
 
     //! get most expensive month
-    let MonthlyValue = chartDataMonthly.map(month => month.value)
-    let totalMax = Math.max(...MonthlyValue)
+    let MonthlyValue: Array<number> = chartDataMonthly.map(month => month.value)
+    let totalMax : number = Math.max(...MonthlyValue)
 
     return (
         <div className='chart'>
