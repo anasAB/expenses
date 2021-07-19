@@ -1,6 +1,6 @@
-export interface IExpenses{
-    expenses:any
+import {IExpenses} from './Expenses'
+export interface IChart{
+    expenses:Array<IExpenses>
 }
 
-let message: string = 'Hello World';
-console.log(message);
+

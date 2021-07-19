@@ -5,7 +5,6 @@ import ExpensesFilter from './ExpensesFilter';
 import {IExpenses} from '../Typing/Expenses'
 
 const Expenses = (props: any) => {
-    console.log('props',props);
     const [filteredYear, setFilteredYear] = useState('2022');
 
     //**! change selected Year 
