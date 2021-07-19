@@ -2,20 +2,20 @@ import React, { useState } from 'react'
 import Chart from '../Charts/Chart';
 import ExpenseList from '../ExpenseList';
 import ExpensesFilter from './ExpensesFilter';
-// import {sumBy} from 'lodash';
+import {IExpenses} from '../Typing/Expenses'
 
 const Expenses = (props: any) => {
-
+    console.log('props',props);
     const [filteredYear, setFilteredYear] = useState('2022');
 
     //**! change selected Year 
-    const changeFilterHandler: any = (selectedYear: any) => {
+    const changeFilterHandler = (selectedYear: string) : void  => {
         setFilteredYear(selectedYear)
     }
 
     //**! Filter Expenses By Year*/
-    const filteredExpenses: any = props.expenses.filter((expenses: any) => {
-        return expenses.date.getFullYear().toString() === filteredYear
+    const filteredExpenses = props.expenses.filter((expenses: IExpenses) => {
+        return expenses.date.getFullYear().toString() !== filteredYear
     })
 
 
