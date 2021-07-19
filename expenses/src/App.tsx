@@ -29,8 +29,9 @@ const App = () => {
   }
 
   //**! Delete Item */
-  const deleteItem = (selectedItem: Number) => {
+  const deleteItem = (selectedItem: any) => {
     const newExpensesList = expenses.filter((item: any) => item.id !== selectedItem);
+    console.log('newExpensesList',selectedItem);
     setExpensesItem(newExpensesList);
   }
 

@@ -1,7 +1,6 @@
-import React, { useState ,ChangeEvent} from 'react'
+import React, { useState ,ChangeEvent,FormEvent} from 'react'
 import './ExpenseForm.css'
 import {IExpenseForm} from '../Typing/ExpenseForm'
-// import {IExpenses} from '../Typing/Expenses'
 
 const ExpenseForm = (props: IExpenseForm) => {
 
@@ -42,7 +41,7 @@ const ExpenseForm = (props: IExpenseForm) => {
     /**
      *! handle submit Form
      */
-    const SubmitFormHandler = (submitEvent: any) => {
+    const SubmitFormHandler = (submitEvent: FormEvent<HTMLFormElement>) => {
         submitEvent.preventDefault();
 
         const newExpense:any  = {
@@ -69,7 +68,7 @@ const ExpenseForm = (props: IExpenseForm) => {
         })
     }
     return (
-        <form onSubmit={SubmitFormHandler} id="myform">
+        <form onSubmit={SubmitFormHandler} >
             <div className='new-expense__controls'>
 
                 <div id='title' className='new-expense__control'>
