@@ -1,8 +1,8 @@
 export interface IExpenses{
-    amount: number
+    id: number 
+    title: string
     cost: number
     date: Date
-    id: number
-    title: String
+    amount: number
 }
 

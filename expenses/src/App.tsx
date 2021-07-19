@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import Expenses from './Component/NewExpense/Expenses';
 import NewExpense from './Component/NewExpense/NewExpense';
 import { IApp, INewExpensive } from './Component/Typing/App'
+import {IExpenses} from './Component/Typing/Expenses'
 
-let dummy_Expenses = [
+let dummy_Expenses : Array<IExpenses> = [
   { id: 1, title: 'Car insurance', cost: 250, date: new Date(2021, 2, 2), amount: 10.12 },
   { id: 2, title: 'Health insurance', cost: 240, date: new Date(2021, 3, 4), amount: 24.12 },
   { id: 3, title: 'Rent', cost: 230, date: new Date(2021, 4, 3), amount: 34.12 },

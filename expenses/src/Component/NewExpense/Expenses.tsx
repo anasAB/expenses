@@ -14,7 +14,7 @@ const Expenses = (props: any) => {
 
     //**! Filter Expenses By Year*/
     const filteredExpenses = props.expenses.filter((expenses: IExpenses) => {
-        return expenses.date.getFullYear().toString() !== filteredYear
+        return expenses.date.getFullYear().toString() === filteredYear
     })
 
 

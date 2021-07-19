@@ -1,8 +1,8 @@
 import React from 'react';
 import './ExpenseItem.css'
 import ExpenseItem from './NewExpense/ExpenseItem';
-import { IExpenseList, IExpense } from './Typing/ExpenseList'
-
+import { IExpenseList } from './Typing/ExpenseList'
+import { IExpenses } from './Typing/Expenses'
 
 
 
@@ -15,17 +15,22 @@ const ExpenseList = (props: IExpenseList) => {
 
   return (
     <ul className='expenses-list'>
-      {props.filteredExpenses.map((expense: IExpense) => (
-        <ExpenseItem
-          key={Math.random().toString()}
-          id={expense.id}
+      {props.filteredExpenses.map((expense: IExpenses) => {
+        let id: number | string = expense.id ?? Math.random().toString();
+
+        return (<ExpenseItem
+          key={Math.random()}
+          id={id}
           title={expense.title}
           amount={expense.amount}
           date={expense.date}
           cost={expense.cost}
           deleteItem={props.deleteItem}
-        />
-      ))}
+        />)
+
+      }
+
+      )}
     </ul>
   );
 }
