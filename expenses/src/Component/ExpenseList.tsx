@@ -15,21 +15,17 @@ const ExpenseList = (props: IExpenseList) => {
 
   return (
     <ul className='expenses-list'>
-      {props.filteredExpenses.map((expense: IExpenses) => {
-        let id: number | string = expense.id ?? Math.random().toString();
-
-        return (<ExpenseItem
+      {props.filteredExpenses.map((expense: IExpenses) => (
+        <ExpenseItem
           key={Math.random()}
-          id={id}
+          id={expense.id}
           title={expense.title}
           amount={expense.amount}
           date={expense.date}
           cost={expense.cost}
           deleteItem={props.deleteItem}
-        />)
-
-      }
-
+        />
+      )
       )}
     </ul>
   );
