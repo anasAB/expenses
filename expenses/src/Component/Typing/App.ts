@@ -8,3 +8,4 @@ export interface INewExpensive{
     date:Date,
     amount:number
 }
+
