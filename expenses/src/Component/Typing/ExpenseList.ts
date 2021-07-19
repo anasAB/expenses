@@ -1,12 +1,13 @@
+import {IExpenses} from './Expenses';
 export interface IExpenseList{
     deleteItem():void
-    filteredExpenses:Array<IExpense>
+    filteredExpenses:Array<IExpenses>
 }
 
-export interface IExpense{
-    amount: number
-    cost: number
-    date: Date
-    id: number
-    title: string 
-  }
+// export interface IExpense{
+//     amount: number
+//     cost: number
+//     date: Date
+//     id: number
+//     title: string 
+//   }

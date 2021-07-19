@@ -3,7 +3,7 @@ import ExpenseDate from '../ExpenseDate'
 import { IExpenseItem } from '../Typing/ExpenseItem';
 
 const ExpenseItem = (props: IExpenseItem) => {
-
+    
     const selectItem = (id: number):void => {
         props.deleteItem(id)
     }

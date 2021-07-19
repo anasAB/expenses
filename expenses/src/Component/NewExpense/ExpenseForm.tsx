@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState ,ChangeEvent} from 'react'
 import './ExpenseForm.css'
+import {IExpenseForm} from '../Typing/ExpenseForm'
+// import {IExpenses} from '../Typing/Expenses'
 
-const ExpenseForm = (props: any) => {
+const ExpenseForm = (props: IExpenseForm) => {
+
     const [userInput, setUserInput] = useState({
         enteredTitle: '',
         enteredAmount: '',
@@ -10,25 +13,27 @@ const ExpenseForm = (props: any) => {
     })
 
 
-    const titleChangeHandler = (title: any) => {
+
+    
+    const titleChangeHandler = (title:ChangeEvent<HTMLInputElement>) => {
         setUserInput((prevState) => {
             return { ...prevState, enteredTitle: title.target.value }
         })
     }
 
-    const amountChangeHandler = (amount: any) => {
+    const amountChangeHandler = (amount: ChangeEvent<HTMLInputElement>) => {
         setUserInput((prevState) => {
             return { ...prevState, enteredAmount: amount.target.value }
         })
     }
 
-    const costChangeHandler = (cost: any) => {
+    const costChangeHandler = (cost: ChangeEvent<HTMLInputElement>) => {
         setUserInput((prevState) => {
             return { ...prevState, enteredCost: cost.target.value }
         })
     }
 
-    const dateChangeHandler = (date: any) => {
+    const dateChangeHandler = (date: ChangeEvent<HTMLInputElement>) => {
         setUserInput((prevState) => {
             return { ...prevState, enteredDate: date.target.value }
         })
@@ -39,11 +44,13 @@ const ExpenseForm = (props: any) => {
      */
     const SubmitFormHandler = (submitEvent: any) => {
         submitEvent.preventDefault();
-        const newExpense = {
+
+        const newExpense:any  = {
             title: userInput.enteredTitle,
-            amount: userInput.enteredAmount,
+            amount: userInput.enteredAmount ,
             cost: +userInput.enteredCost,
-            date: new Date(userInput.enteredDate)
+            date: new Date(userInput.enteredDate),
+            
         }
 
         props.receiveNewExpensive(newExpense)
