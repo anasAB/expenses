@@ -1,6 +1,7 @@
-import React, { useState ,ChangeEvent,FormEvent} from 'react'
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react'
 import './ExpenseForm.css'
-import {IExpenseForm} from '../Typing/ExpenseForm'
+import { IExpenseForm } from '../Typing/ExpenseForm'
+import Button from './../UI/Button';
 
 const ExpenseForm = (props: IExpenseForm) => {
 
@@ -11,10 +12,21 @@ const ExpenseForm = (props: IExpenseForm) => {
         enteredCost: ''
     })
 
+    const [formIsValid, setFormIsValid] = useState(false);
 
 
-    
-    const titleChangeHandler = (title:ChangeEvent<HTMLInputElement>) => {
+    useEffect(() => {
+        setFormIsValid(
+            userInput.enteredTitle.trim().length > 4 &&
+            +userInput.enteredAmount > 0
+            && +userInput.enteredCost > 0
+            && userInput.enteredDate.trim().length > 0
+        );
+
+    }, [userInput.enteredTitle, userInput.enteredAmount, userInput.enteredCost, userInput.enteredDate])
+
+
+    const titleChangeHandler = (title: ChangeEvent<HTMLInputElement>) => {
         setUserInput((prevState) => {
             return { ...prevState, enteredTitle: title.target.value }
         })
@@ -44,12 +56,12 @@ const ExpenseForm = (props: IExpenseForm) => {
     const SubmitFormHandler = (submitEvent: FormEvent<HTMLFormElement>) => {
         submitEvent.preventDefault();
 
-        const newExpense:any  = {
+        const newExpense: any = {
             title: userInput.enteredTitle,
-            amount: userInput.enteredAmount ,
+            amount: userInput.enteredAmount,
             cost: +userInput.enteredCost,
             date: new Date(userInput.enteredDate),
-            
+            id: Math.random()
         }
 
         props.receiveNewExpensive(newExpense)
@@ -67,11 +79,12 @@ const ExpenseForm = (props: IExpenseForm) => {
             }
         })
     }
+
     return (
         <form onSubmit={SubmitFormHandler} >
             <div className='new-expense__controls'>
 
-                <div id='title' className='new-expense__control'>
+                <div className='new-expense__control'>
                     <label>title</label>
                     <input type='text' value={userInput.enteredTitle} placeholder='Title' onChange={titleChangeHandler} />
                 </div>
@@ -91,8 +104,14 @@ const ExpenseForm = (props: IExpenseForm) => {
                     <input type='Date' value={userInput.enteredDate} placeholder='Date' min='2019-01-01' max='2022-12-31' onChange={dateChangeHandler} />
                 </div>
 
-                <div className='new-expense button'>
-                    <button type='submit' disabled={userInput.enteredTitle === '' || userInput.enteredAmount === "" || userInput.enteredDate === '' || userInput.enteredCost === ''} >Add Expense</button>
+                {/* <div className='new-expense button'>
+                    <Button type='submit'  disabled ={!formIsValid}>Add Expense</Button>
+                </div> */}
+
+                <div className='actions'>
+                    <Button type="submit" disabled={!formIsValid}>
+                        Add Expense
+                    </Button>
                 </div>
 
             </div>
