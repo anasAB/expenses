@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Expenses from './Component/NewExpense/Expenses';
 import NewExpense from './Component/NewExpense/NewExpense';
-import { IApp, INewExpensive } from './Component/Typing/App'
+import {INewExpensive } from './Component/Typing/App'
 import {IExpenses} from './Component/Typing/Expenses'
 
 let dummy_Expenses : Array<IExpenses> = [
@@ -31,7 +31,6 @@ const App = () => {
   //**! Delete Item */
   const deleteItem = (selectedItem: any) => {
     const newExpensesList = expenses.filter((item: any) => item.id !== selectedItem);
-    console.log('newExpensesList',selectedItem);
     setExpensesItem(newExpensesList);
   }
 
