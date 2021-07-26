@@ -16,12 +16,18 @@ const ExpenseForm = (props: IExpenseForm) => {
 
 
     useEffect(() => {
-        setFormIsValid(
-            userInput.enteredTitle.trim().length > 4 &&
-            +userInput.enteredAmount > 0
-            && +userInput.enteredCost > 0
-            && userInput.enteredDate.trim().length > 0
-        );
+        const validation = setTimeout(() => {
+            setFormIsValid(
+                userInput.enteredTitle.trim().length > 4 &&
+                +userInput.enteredAmount > 0
+                && +userInput.enteredCost > 0
+                && userInput.enteredDate.trim().length > 0
+            );
+        }, 500);
+
+        return () => {
+            clearTimeout(validation)
+        }
 
     }, [userInput.enteredTitle, userInput.enteredAmount, userInput.enteredCost, userInput.enteredDate])
 
