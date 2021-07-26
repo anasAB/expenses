@@ -1,10 +1,11 @@
-// import React from 'react'
+import React from 'react'
 import ExpenseDate from '../ExpenseDate'
 import { IExpenseItem } from '../Typing/ExpenseItem';
+import Button from './../UI/Button';
 
 const ExpenseItem = (props: IExpenseItem) => {
-    
-    const selectItem = (id: number):void => {
+
+    const selectItem = (id: number): void => {
         props.deleteItem(id)
     }
 
@@ -17,8 +18,10 @@ const ExpenseItem = (props: IExpenseItem) => {
                     <div className='expense-item__price'>${props.cost}</div>
                 </div>
 
-                <div style={{ margin: '10px' }}>
-                    <button type='button' onClick={() => selectItem(props.id)}>Delete</button>
+                <div style={{ margin: '10px', padding:'10 px' }}>
+                    <Button type="button" onClick={() => selectItem(props.id)}>
+                        Delete
+                    </Button>
                 </div>
             </div>
         </div>
